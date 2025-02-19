@@ -22,59 +22,58 @@ document.addEventListener("DOMContentLoaded", function () {
     const userCart = cart.find(item => item.userID === userID);
     
     // Get the cart count display element
-    const cartCountElement = document.querySelector('.fas .fa-shopping-cart');
-    
-    // If the cart is empty, display a message and set cart count to 0
-    if (!userCart || userCart.items.length === 0) {
-        document.querySelector('#cart-items').innerHTML = "<p>Your cart is empty. Start adding items!</p>";
-        if (cartCountElement) {
-            cartCountElement.innerHTML = ` 
-             <span class="badge bg-danger">0</span>`
-             ;
-        }
-        return;
-    }
-    
-    // Update the cart count display with the number of items in the cart
+const cartCountElement = document.querySelector('#cart-items-count');
+
+// If the cart is empty, display a message and set cart count to 0
+if (!userCart || userCart.items.length === 0) {
+    document.querySelector('#cart-items').innerHTML = "<p>Your cart is empty. Start adding items!</p>";
     if (cartCountElement) {
-        cartCountElement.innerHTML = `<span class="badge bg-danger">${userCart.items.length}</span>`;
+        cartCountElement.innerHTML = "0"; // Set the cart count to 0
     }
+    return;
+}
 
-    let cartItemsHTML = '';
-    let totalAmount = 0;
+// Update the cart count display with the number of items in the cart
+if (cartCountElement) {
+    cartCountElement.innerHTML = userCart.items.length; // Set the cart count based on the number of items
+}
 
-    // Loop through each item in the cart and generate HTML for display
-    userCart.items.forEach(item => {
-        const itemTotal = item.total;
-        totalAmount += itemTotal;
+let cartItemsHTML = '';
+let totalAmount = 0;
 
-        cartItemsHTML += `
-            <div class="col-md-12 mb-3">
-                <div class="card">
-                    <div class="card-body d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                            <img src="${item.img}" alt="Movie Poster" style="width: 100px; height: 150px; object-fit: cover;" class="me-3">
-                            <div>
-                                <h5 class="card-title mb-0">${item.title}</h5>
-                                <p class="card-text">Price: ₹${item.price}</p>
-                                <p class="card-text">Quantity: <span class="movie-quantity">${item.quantity}</span></p>
-                            </div>
+// Loop through each item in the cart and generate HTML for display
+userCart.items.forEach(item => {
+    const itemTotal = item.total;
+    totalAmount += itemTotal;
+
+    cartItemsHTML += `
+        <div class="col-md-12 mb-3">
+            <div class="card">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <img src="${item.img}" alt="Movie Poster" style="width: 100px; height: 150px; object-fit: cover;" class="me-3">
+                        <div>
+                            <h5 class="card-title mb-0">${item.title}</h5>
+                            <p class="card-text">Price: ₹${item.price}</p>
+                            <p class="card-text">Quantity: <span class="movie-quantity">${item.quantity}</span></p>
                         </div>
-                        <div class="d-flex align-items-center">
-                            <input type="number" class="form-control movie-quantity-input" value="${item.quantity}" min="1" max="10" style="width: 80px;" data-movie-title="${item.title}">
-                            <span class="ms-2 item-total-price">₹ ${itemTotal}</span>
-                        </div>
-                        <button class="btn btn-danger ms-3 remove-item-btn" data-movie-title="${item.title}">
-                            <i class="fas fa-trash"></i> Remove
-                        </button>
                     </div>
+                    <div class="d-flex align-items-center">
+                        <input type="number" class="form-control movie-quantity-input" value="${item.quantity}" min="1" max="10" style="width: 80px;" data-movie-title="${item.title}">
+                        <span class="ms-2 item-total-price">₹ ${itemTotal}</span>
+                    </div>
+                    <button class="btn btn-danger ms-3 remove-item-btn" data-movie-title="${item.title}">
+                        <i class="fas fa-trash"></i> Remove
+                    </button>
                 </div>
             </div>
-        `;
-    });
+        </div>
+    `;
+});
 
-    // Insert the generated HTML into the cart container
-    document.querySelector('#cart-items').innerHTML = cartItemsHTML;
+// Insert the generated HTML into the cart container
+document.querySelector('#cart-items').innerHTML = cartItemsHTML;
+
     
     // Update the total amount for the cart
     document.querySelector('#cart-total').innerText = totalAmount;
