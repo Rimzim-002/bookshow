@@ -1,0 +1,14 @@
+{
+    "rewrites": [
+      { "source": "/", "destination": "/pages/signup.html" },
+      { "source": "/login", "destination": "/pages/login.html" },
+      { "source": "/dashboard", "destination": "/pages/dashboard.html" },
+      { "source": "/cart", "destination": "/pages/cart.html" },
+      { "source": "/latest-movies", "destination": "/pages/latestMovies.html" },
+      { "source": "/modals", "destination": "/pages/modals.html" },
+      { "source": "/movie-detail", "destination": "/pages/movie-detail.html" },
+      { "source": "/reco-movies", "destination": "/pages/recoMovies.html" },
+      { "source": "/upcoming-movies", "destination": "/pages/upcomingMovies.html" }
+    ]
+  }
+  
