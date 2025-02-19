@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/img/R-removebg-preview.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/recoMovies.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="../css/dashboard.css">
+    <title>Movies</title>
+</head>
+<style>
+    span.badge.bg-danger {
+    height: 15px;
+    width: 15px;
+    font-size: 9px;
+}
+</style>
+<body>
+
+       <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar shadow-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../pages/dashboard.html">
+                <img src="../assets/img/R-removebg-preview.png" alt="Brand Logo" height="100">
+            </a>
+    
+            <form class="d-flex w-50 ms-3 position-relative" method="get">
+                <input id="search-input" class="form-control me-2" type="search"
+                    placeholder="Search for Movies, Events, Plays, Sports and Activities" aria-label="Search">
+                <button class="btn-search" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            
+                <!-- Dropdown for Suggestions -->
+                <ul id="search-suggestions" class="dropdown-menu w-100" style="display: none; position: absolute; top: 100%; left: 0; max-height: 200px; overflow-y: auto; z-index: 1050;"></ul>
+            </form>
+    
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto d-flex align-items-center justify-content-center w-100">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                    </li>
+    
+                    <li class="nav-item d-flex align-items-center ms-3 justify-content-center">
+                        <div class="d-flex align-items-center me-3">
+                            <!-- User Circle Icon (Clickable) -->
+                            <button id="user-icon-btn" style="border: none; background: transparent;" aria-label="User Profile">
+                                <i class="fas fa-user-circle fa-lg"></i>
+                            </button>
+                            <span class="user-name ms-2"></span>
+                        </div>
+                        <a href="/cart">
+                            <i class="fas fa-shopping-cart fa-lg"></i>
+                            <span class="badge.bg-danger"></span>
+                        </a>                      </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Modal for Logout Confirmation -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top: 70px; left:45%; transform: translateX(-50%); width: 150px;">
+        <div class="modal-content">
+            <!-- <div class="modal-header">
+                <h5 class="modal-title" id="logoutModalLabel">Signout</h5>
+            </div> -->
+            <div class="modal-body">
+                <button type="button" class="btn btn-primary" id="signout-btn">Signout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Second Modal: Final Signout Confirmation -->
+<div class="modal fade" id="finalLogoutModal" tabindex="-1" aria-labelledby="finalLogoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top: 70px; left: 50%; transform: translateX(-50%); width: 300px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="finalLogoutModalLabel">Confirm Logout</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to log out?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirm-logout-btn">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Language Buttons -->
+    <div class="container my-5">
+      <div class="d-flex justify-content-start align-items-center">
+          <h3 class="me-3">Movies</h3>
+          <button type="button" class="btn btn-outline-custom rounded-pill me-2">Hindi</button>
+          <button type="button" class="btn btn-outline-custom rounded-pill me-2">English</button>
+          <button type="button" class="btn btn-outline-custom rounded-pill me-2">Punjabi</button>
+          <button type="button" class="btn btn-outline-custom rounded-pill">Tamil</button>
+      </div>
+  </div>
+  
+
+    <!-- Movie Listings -->
+    <section class="container movie-listings">
+        <h2 class="text-center mb-4">Now Showing</h2>
+
+        <!-- Hindi Movies -->
+        <h3 class="mt-5 mb-3 movie-section" data-language="hindi">Hindi Movies</h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Movie 1 -->
+            <div class="col">
+                <div class="card">
+                    <img src="../assets/img/BareillyKiBarfi.avif" class="card-img-top" alt="Bareilly Ki Barfi">
+                    <div class="card-body">
+                        <h5 class="card-title">Bareilly Ki Barfi</h5>
+                        <p class="card-text">A quirky romantic comedy set in a small town.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=0" class="btn btn-primary movie-button">Book Now</a>
+                        
+                        
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="0" 
+                        data-movie-title="Bareilly Ki Barfi" 
+                        data-movie-img="../assets/img/BareillyKiBarfi.avif">
+                        Add to Cart
+                    </button>
+                    
+                    </div>
+                </div>
+            </div>
+            <!-- Movie 2 -->
+            <div class="col">
+                <div class="card">
+                    <img src="../assets/img/Diltopagalhai.avif" class="card-img-top" alt="Dil To Pagal Hai">
+                    <div class="card-body">
+                        <h5 class="card-title">Dil To Pagal Hai</h5>
+                        <p class="card-text">A classic Bollywood romance.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=1" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="1" 
+                        data-movie-title="Dil To Pagal Hai" 
+                        data-movie-img="../assets/img/Diltopagalhai.avif">
+                        Add to Cart
+                    </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Movie 3 -->
+            <div class="col">
+                <div class="card">
+                    <img src="../assets/img/Jabwemet.avif" class="card-img-top" alt="Jab We Met">
+                    <div class="card-body">
+                        <h5 class="card-title">Jab We Met</h5>
+                        <p class="card-text">A heartwarming drama about family and love.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=2" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="2" 
+                        data-movie-title="Jab We Met" 
+                        data-movie-img="../assets/img/Jabwemet.avif">
+                        Add to Cart
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- English Movies -->
+        <h3 class="mt-5 mb-3 movie-section" data-language="english">English Movies</h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Movie 1 -->
+            <div class="col">
+                <div class="card">
+                    <img src="../assets/img/captainAmerica.avif" class="card-img-top" alt="Captain America">
+                    <div class="card-body">
+                        <h5 class="card-title">Captain America</h5>
+                        <p class="card-text">A sci-fi adventure exploring the future of humanity.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=3" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="3" 
+                        data-movie-title="Captain America" 
+                        data-movie-img="../assets/img/captainAmerica.avif">
+                        Add to Cart
+                    </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Movie 2 -->
+            <div class="col">
+                <div class="card">
+                    <img src="../assets/img/Interstellar.avif" class="card-img-top" alt="Interstellar">
+                    <div class="card-body">
+                        <h5 class="card-title">Interstellar</h5>
+                        <p class="card-text">A space exploration film with stunning visuals.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=4" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="4" 
+                        data-movie-title="Interstellar" 
+                        data-movie-img="../assets/img/Interstellar.avif">
+                        Add to Cart
+                    </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Movie 3 -->
+            <div class="col">
+                <div class="card">
+                    <img src="../assets/img/Sonic.avif" class="card-img-top" alt="Sonic">
+                    <div class="card-body">
+                        <h5 class="card-title">Sonic</h5>
+                        <p class="card-text">A sci-fi adventure exploring the future of humanity.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=5" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="5" 
+                        data-movie-title="Sonic" 
+                        data-movie-img="../assets/img/Sonic.avif">
+                        Add to Cart
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Punjabi Movies -->
+        <h3 class="mt-5 mb-3 movie-section" data-language="punjabi">Punjabi Movies</h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Movie 1 -->
+            <div class="col">
+                <div class="card">
+                    <img src="../assets/img/HoshiarSingh.avif" class="card-img-top" alt="Hoshiar Singh">
+                    <div class="card-body">
+                        <h5 class="card-title">Hoshiar Singh</h5>
+                        <p class="card-text">A thrilling adventure film.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=6" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="6" 
+                        data-movie-title="HoshiarSingh" 
+                        data-movie-img="../assets/img/HoshiarSingh.avif">
+                        Add to Cart
+                    </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Movie 2 -->
+            <!-- <div class="col">
+                <div class="card">
+                    <img src="/assets/img/HoshiarSingh.avif" class="card-img-top" alt="Hoshiar Singh">
+                    <div class="card-body">
+                        <h5 class="card-title">Hoshiar Singh</h5>
+                        <p class="card-text">A thrilling adventure film.</p>
+                        <a href="#" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div> -->
+            <!-- Movie 3 -->
+            <div class="col">
+                <div class="card">
+                    <img src="../assets/img/Majhail.avif" class="card-img-top" alt="Majhail">
+                    <div class="card-body">
+                        <h5 class="card-title">Majhail</h5>
+                        <p class="card-text">An action-packed Punjabi film.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=7" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="7" 
+                        data-movie-title="Majhail" 
+                        data-movie-img="../assets/img/Majhail.avif">
+                        Add to Cart
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tamil Movies -->
+        <h3 class="mt-5 mb-3 movie-section" data-language="tamil">Tamil Movies</h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Movie 1 -->
+            <div class="col">
+                <div class="card">
+                    <img src="../assets/img/Thandel.avif" class="card-img-top" alt="Thandel">
+                    <div class="card-body">
+                        <h5 class="card-title">Thandel</h5>
+                        <p class="card-text">A thrilling Tamil action movie.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=8" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="8" 
+                        data-movie-title="Thandel" 
+                        data-movie-img="../assets/img/Thandel.avif">
+                        Add to Cart
+                    </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Movie 2 -->
+            <div class="col">
+                <div class="card">
+                    <img src="../assets/img/Vidaamuyarchi.avif" class="card-img-top" alt="Vidaamuyarchi">
+                    <div class="card-body">
+                        <h5 class="card-title">Vidaamuyarchi</h5>
+                        <p class="card-text">A gripping Tamil drama.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=9" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="9" 
+                        data-movie-title="Vidaamuyarchi" 
+                        data-movie-img="../assets/img/Vidaamuyarchi.avif">
+                        Add to Cart
+                    </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Movie 3 -->
+            <div class="col">
+                <div class="card">
+                    <img src="../assets/img/Marco.avif" class="card-img-top" alt="Marco">
+                    <div class="card-body">
+                        <h5 class="card-title">Marco</h5>
+                        <p class="card-text">A thrilling Tamil action movie.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=10" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="10" 
+                        data-movie-title="Marco" 
+                        data-movie-img="../assets/img/Marco.avif">
+                        Add to Cart
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-4">
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/recoMovies.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/movie-details.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</html>
+	

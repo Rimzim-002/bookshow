@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Booking</title>
+    <link rel="icon" href="../assets/img/R-removebg-preview.png" type="image/x-icon">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap JS (Including Popper.js) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="../css/dashboard.css">
+
+   <style>
+        .main-div {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px 0;
+            min-height: 100vh;
+            z-index: 1;
+        }
+
+        .main-div::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+    
+
+
+        .movie-card {
+            max-width: 80%;
+            margin-left: 30px;
+            z-index: 2;
+        }
+
+        .movie-image {
+            border-radius: 8px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .movie-info {
+            z-index: 2;
+            color: #ffffff;
+        }
+
+        .movie-info h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .movie-info .rating {
+            font-size: 1.2rem;
+            color: #ffc107;
+        }
+
+        .movie-description {
+            margin-top: 60px;
+            padding: 0 20px 0 30px;
+        }
+
+        .btn {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        button.btn-search {
+    border: none;
+    background: none;
+}
+button.btn.btn-success.book-btn{
+    background-color: #ff005e;
+    border: none;
+}
+/* / Responsive Design: Start of Media Queries / */
+
+@media (max-width: 768px) {
+    .heading-text {
+        margin-left: 20px;
+        margin-right: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* / Navbar - adjust for smaller screens  / */
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-nav .nav-item {
+        padding: 10px 0;
+    }
+
+    /* / / Adjust Search Bar / / */
+    .btn-search {
+        height: 35px;
+        width: 35px;
+    }
+
+    .navbar-brand img {
+        height: 60px;
+    }
+
+    #carouselExampleIndicators {
+        height: 300px;
+    }
+
+    /* / / Movie Card Grid / / */
+    .row-cols-md-2 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* / / Fix dropdown styling for small screens / / */
+    #search-results {
+        max-height: 200px;
+    }
+
+   /* / / Adjust card size / / */
+    .card {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .heading-text {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+/* 
+    / Adjust Search Button / */
+    .btn-search {
+        padding: 5px;
+        height: 25px;
+        width: 25px;
+    }
+
+    .navbar-brand img {
+        height: 50px;
+    }
+
+    #carouselExampleIndicators {
+        height: 250px;
+    }
+
+    /* / / Adjust Movie Cards / / */
+    .card {
+        width: 100% !important;
+    }
+
+    /* / / Ensure the modal is positioned just below the user circle / / */
+    #logoutModal .modal-dialog {
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+    }
+}
+/* 
+/ Additional Fix for Large Screens / */
+@media (min-width: 1200px) {
+    .navbar-nav .nav-item {
+        padding: 0 25px;
+    }
+
+    .navbar-brand img {
+        height: 90px;
+    }
+
+    .heading-text {
+        margin-left: 60px;
+        margin-right: 60px;
+    }
+
+    #carouselExampleIndicators {
+        height: 500px;
+    }
+}
+@media (max-width: 768px) {
+    .main-div {
+        background-image: none !important; /*Hide background image */
+        background-color: #ffffff !important; /* White background */
+    }
+}
+
+@media (max-width: 576px) {
+    .main-div {
+        background-image: none !important; /* Hide background image */
+        background-color: #ffffff !important; /* White background */
+    }
+}
+@media (max-width: 768px) {
+    .main-div .movie-info {
+        text-align: inherit !important; /* Inherit alignment from parent or About */
+        margin-left: inherit !important; 
+        padding-left: inherit !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-div .movie-info {
+        text-align: inherit !important;
+        margin-left: inherit !important;
+        padding-left: inherit !important;
+    }
+}
+@media (max-width: 768px) {
+    .main-div .movie-info {
+        text-align: var(--about-text-align, left) !important;
+        margin-left: var(--about-margin-left, 20px) !important;
+        padding-left: var(--about-padding-left, 20px) !important;
+    }
+}
+span.badge.bg-danger {
+    height: 15px;
+    width: 15px;
+    font-size: 9px;
+}
+@media (max-width: 768px) {
+    .main-div .movie-info {
+        margin-top: 50px !important; /* Adds space between image and content */
+    }
+}
+
+@media (max-width: 576px) {
+    .main-div .movie-info {
+        margin-top: 10px !important; /* Adds slightly less space on smaller screens */
+    }
+}
+
+/* / / End of Media Queries / / */
+
+
+
+    </style>   
+</head>
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar shadow-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../pages/dashboard.html">
+                <img src="../assets/img/R-removebg-preview.png" alt="Brand Logo" height="100">
+            </a>
+    
+            <form class="d-flex w-50 ms-3 position-relative" method="get">
+                <input id="search-input" class="form-control me-2" type="search"
+                    placeholder="Search for Movies, Events, Plays, Sports and Activities" aria-label="Search">
+                <button class="btn-search" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            
+                <!-- Dropdown for Suggestions -->
+                <ul id="search-suggestions" class="dropdown-menu w-100" style="display: none; position: absolute; top: 100%; left: 0; max-height: 200px; overflow-y: auto; z-index: 1050;"></ul>
+            </form>
+    
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto d-flex align-items-center justify-content-center w-100">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                    </li>
+    
+                    <li class="nav-item d-flex align-items-center ms-3 justify-content-center">
+                        <div class="d-flex align-items-center me-3">
+                            <!-- User Circle Icon (Clickable) -->
+                            <button id="user-icon-btn" style="border: none; background: transparent;" aria-label="User Profile">
+                                <i class="fas fa-user-circle fa-lg"></i>
+                            </button>
+                            <span class="user-name ms-2"></span>
+                        </div>
+                        <a href="/cart">
+                            <i class="fas fa-shopping-cart fa-lg"></i>
+                        </a>                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Modal for Logout Confirmation -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top: 70px; left:45%; transform: translateX(-50%); width: 150px;">
+        <div class="modal-content">
+            <!-- <div class="modal-header">
+                <h5 class="modal-title" id="logoutModalLabel">Signout</h5>
+            </div> -->
+            <div class="modal-body">
+                <button type="button" class="btn btn-primary  user-icon-btn" id="signout-btn">Signout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Second Modal: Final Signout Confirmation -->
+<div class="modal fade" id="finalLogoutModal" tabindex="-1" aria-labelledby="finalLogoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top: 70px; left: 50%; transform: translateX(-50%); width: 300px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="finalLogoutModalLabel">Confirm Logout</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to log out?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirm-logout-btn">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container-fluid main-div mb-3">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card movie-card">
+                    <img src="" alt="Movie Poster" class="movie-image" id="movie-poster">
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="movie-info">
+                    <h1 id="movie-title"></h1>
+                    <p class="rating" id="movie-rating"></p>
+                    <div class="details mb-5">
+                        <span class="badge bg-secondary" id="movie-format"></span>
+                        <span class="badge bg-secondary" id="movie-language"></span>
+                        <p id="movie-details"></p>
+                    </div>
+                    <button class="btn btn-success book-btn">Book Tickets</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="movie-description col-md-9">
+        <h3><strong>About Movie</strong></h3>
+        <p id="movie-about"></p>
+    </div>
+
+
+
+<!-- Booking Modal -->
+<div class="modal fade" id="bookTicketModal" tabindex="-1" aria-labelledby="bookTicketModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookTicketModalLabel">Book Your Ticket</h5>
+            </div>
+            <div class="modal-body">
+                <h5>Price of the Ticket: ₹<span id="ticketPrice">300</span></h5>
+
+                <label for="ticketCount" class="mt-2">Select Ticket Count:</label>
+                <input type="number" id="ticketCount" class="form-control" min="1" value="1">
+
+                <h5 class="mt-3">Total Amount: ₹<span id="totalAmount">300</span></h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="closebutton" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="proceedToPaymentBtn">Proceed to Payment</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="paymentModalLabel">Payment Details</h5>
+            </div>
+            <div class="modal-body">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" class="form-control" placeholder="Enter card number" maxlength="16">
+
+                <label for="expiryDate" class="mt-2">Expiry Date:</label>
+                <input type="month" id="expiryDate" class="form-control">
+
+                <label for="cvv" class="mt-2">CVV:</label>
+                <input type="password" id="cvv" class="form-control" maxlength="3">
+
+                <h5 class="mt-3">Total Amount: ₹<span id="paymentAmount">0</span></h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="closepaynow" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" id="payNowBtn">Pay Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success Message Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Booking Successful</h5>
+            </div>
+            <div class="modal-body text-center">
+                <h4>✅ Your booking has been successfully completed!</h4>
+                <p>Thank you for your purchase.</p>
+                <!-- Button to redirect to the dashboard -->
+                <a href="../pages/dashboard.html" class="btn btn-primary btn-sm">Go back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap JS (Make sure it's included) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <footer class="text-center py-4">
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/movie-details.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script  src="../js/cart.js"></script>
+    <script src="../js/recoMovies.js"></script>
+    
+
+    </script>
+</body>
+</html>
