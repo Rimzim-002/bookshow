@@ -1,0 +1,152 @@
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Controls the spacing between the cards */
+}
+
+.movie-grid .col-md-4 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  width: 33.33%; /* Default width for medium screens and larger */
+}
+
+.btn-primary {
+  background-color: #ff005e;
+  border-color: #ff005e;
+}
+
+footer {
+  background-color: #f1f1f1;
+  padding: 10px 0;
+}
+
+button.btn-search {
+  border: none;
+  background: none;
+}
+
+/* Language Button Css */
+.btn-outline-custom {
+  border-color: #ff005e;
+  color: #ff005e;
+}
+
+.btn-outline-custom:hover {
+  background-color: #ff005e;
+  color: white;
+  border-color: #ff005e; /* Keeps the border color consistent on hover */
+}
+
+
+
+/* Responsive Design: Start of Media Queries */
+
+@media (max-width: 768px) {
+  .heading-text {
+      margin-left: 20px;
+      margin-right: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  /* Navbar - adjust for smaller screens */
+  .navbar-nav {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .navbar-nav .nav-item {
+      padding: 10px 0;
+  }
+
+  /* Adjust Search Bar */
+  .btn-search {
+      height: 35px;
+      width: 35px;
+  }
+
+  .navbar-brand img {
+      height: 60px;
+  }
+
+  #carouselExampleIndicators {
+      height: 300px;
+  }
+
+  /* Movie Card Grid */
+  .row-cols-md-2 {
+      grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Fix dropdown styling for small screens */
+  #search-results {
+      max-height: 200px;
+  }
+
+  /* Adjust card size */
+  .card {
+      width: 100% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .heading-text {
+      margin-left: 10px;
+      margin-right: 10px;
+  }
+
+  .navbar-nav {
+      flex-direction: column;
+  }
+
+  /* Adjust Search Button */
+  .btn-search {
+      padding: 5px;
+      height: 25px;
+      width: 25px;
+  }
+
+  .navbar-brand img {
+      height: 50px;
+  }
+
+  #carouselExampleIndicators {
+      height: 250px;
+  }
+
+  /* Adjust Movie Cards */
+  .card {
+      width: 100% !important;
+  }
+
+  /* Ensure the modal is positioned just below the user circle */
+  #logoutModal .modal-dialog {
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+  }
+}
+
+/* Additional Fix for Large Screens */
+@media (min-width: 1200px) {
+  .navbar-nav .nav-item {
+      padding: 0 25px;
+  }
+
+  .navbar-brand img {
+      height: 90px;
+  }
+
+  .heading-text {
+      margin-left: 60px;
+      margin-right: 60px;
+  }
+
+  #carouselExampleIndicators {
+      height: 500px;
+  }
+}
+
+/* End of Media Queries */

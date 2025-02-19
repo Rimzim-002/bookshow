@@ -1,0 +1,237 @@
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+.card:hover {
+    transform: translateY(-5px); /* Slightly move the card up */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+.comming-soon{
+    height: 400px;
+    width: 470px;
+    object-fit:cover;
+}
+.dashboard-headings{
+    margin-left: -21px;
+}
+.content {
+    flex: 1;
+}
+.card-title{
+    color: black;
+}
+
+footer {
+    background-color: #f1f1f1;
+    padding: 10px 0;
+    margin-top: 10px;
+}
+
+html,
+body {
+    width: 100%;
+}
+
+.btn-search {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-search i {
+    font-size: 16px;
+}
+
+.navbar-brand img {
+    height: 80px;
+}
+
+.navbar-nav {
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbar-nav .nav-item {
+    padding: 0 15px;
+}
+
+#carouselExampleIndicators {
+    height: 400px;
+    max-height: 400px;
+    margin-bottom: 20px;
+}
+
+#carouselExampleIndicators img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.card-text {
+    color: gray;
+}
+
+.heading-text {
+    margin-left: 30px;
+    margin-right: 60px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.see-more {
+    font-size: 16px;
+    color: #ff0015;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    margin-left: 30px;
+}
+
+.see-more:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Responsive Design: Start of Media Queries */
+
+@media (max-width: 768px) {
+    .heading-text {
+        margin-left: 20px;
+        margin-right: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Navbar - adjust for smaller screens */
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-nav .nav-item {
+        padding: 10px 0;
+    }
+
+    /* Adjust Search Bar */
+    .btn-search {
+        height: 35px;
+        width: 35px;
+    }
+
+    .navbar-brand img {
+        height: 60px;
+    }
+
+    #carouselExampleIndicators {
+        height: 300px;
+    }
+
+    /* Movie Card Grid */
+    .row-cols-md-2 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Fix dropdown styling for small screens */
+    #search-results {
+        max-height: 200px;
+    }
+
+    /* Adjust card size */
+    .card {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .heading-text {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+
+    /* Adjust Search Button */
+    .btn-search {
+        padding: 5px;
+        height: 25px;
+        width: 25px;
+    }
+
+    .navbar-brand img {
+        height: 50px;
+    }
+
+    #carouselExampleIndicators {
+        height: 250px;
+    }
+
+    /* Adjust Movie Cards */
+    .card {
+        width: 100% !important;
+    }
+
+    /* Ensure the modal is positioned just below the user circle */
+    #logoutModal .modal-dialog {
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+    }
+}
+
+/* Additional Fix for Large Screens */
+@media (min-width: 1200px) {
+    .navbar-nav .nav-item {
+        padding: 0 25px;
+    }
+
+    .navbar-brand img {
+        height: 90px;
+    }
+
+    .heading-text {
+        margin-left: 60px;
+        margin-right: 60px;
+    }
+
+    #carouselExampleIndicators {
+        height: 500px;
+    }
+}
+@media (max-width: 768px) {
+    #carouselExampleIndicators {
+        height: 300px;
+        margin-bottom: 1px !important; /* Almost no space below carousel */
+    }
+
+    .content {
+        margin-top: 1px !important; /* Minimal space above content */
+    }
+}
+
+@media (max-width: 576px) {
+    #carouselExampleIndicators {
+        height: 250px;
+        margin-bottom: 1px !important; /* Tightest space below carousel */
+    }
+
+    .content {
+        margin-top: 0 !important; /* No space above content */
+    }
+}
+
+
+/* End of Media Queries */
