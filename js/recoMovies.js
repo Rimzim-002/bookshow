@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
             section.nextElementSibling.style.display = "flex"; // Show movie cards
         });
     }
+     const addcart=document.getElementById('add-to-cart')
+     addcart.addEventListener("click",function(){
+        window.location.reload();
+     })
 
     function filterMovies(selectedLanguage) {
         movieSections.forEach(section => {
