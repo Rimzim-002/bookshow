@@ -141,7 +141,19 @@ document.addEventListener("DOMContentLoaded", function () {
     { title: "Majhail", link: "../pages/movie-detail.html?movieIndex=7" },
     { title: "Thandel", link: "../pages/movie-detail.html?movieIndex=8" },
     { title: "Vidaamuyarchi", link: "../pages/movie-detail.html?movieIndex=9" },
-    { title: "Marco", link: "../pages/movie-detail.html?movieIndex=10" }
+    { title: "Marco", link: "../pages/movie-detail.html?movieIndex=10" },
+    { title: "Nosferatu", link: "../pages/movie-detail.html?movieIndex=11" },
+    { title: "Dragon", link: "../pages/movie-detail.html?movieIndex=12" },
+    { title: "Chhaava", link: "../pages/movie-detail.html?movieIndex=13" },
+    { title: "Deva", link: "../pages/movie-detail.html?movieIndex=14" },
+    { title: "Loveyappa", link: "../pages/movie-detail.html?movieIndex=15" },
+
+
+
+    
+
+
+
 ];
 
 const searchInput = document.getElementById("search-input");

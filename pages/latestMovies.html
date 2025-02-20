@@ -16,21 +16,10 @@
     width: 15px;
     font-size: 9px;
 }
-.card-title{
-    color: #000;
-}
-.card-text{
-    color: #000;
-}
-.card:hover {
-    transform: translateY(-1px); /* Slightly move the card up */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
-}
-
 </style>
 <body>
 
-        <!-- navbar -->
+       <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar shadow-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="/dashboard">
@@ -70,197 +59,243 @@
                         <a href="/cart">
                             <i class="fas fa-shopping-cart fa-lg"></i>
                             <span class="badge bg-danger" id="cart-items-count"></span>
-                        </a>                  </li>
+                        </a>                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-        
-        <!-- Modal for Logout Confirmation -->
-    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="top: 70px; left:45%; transform: translateX(-50%); width: 150px;">
-            <div class="modal-content">
-                <!-- <div class="modal-header">
-                    <h5 class="modal-title" id="logoutModalLabel">Signout</h5>
-                </div> -->
-                <div class="modal-body">
-                    <button type="button" class="btn btn-primary" id="signout-btn">Signout</button>
-                </div>
-            </div>
-        </div>
-    </div>
     
-    <!-- Second Modal: Final Signout Confirmation -->
-    <div class="modal fade" id="finalLogoutModal" tabindex="-1" aria-labelledby="finalLogoutModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="top: 70px; left: 50%; transform: translateX(-50%); width: 300px;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="finalLogoutModalLabel">Confirm Logout</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to log out?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="confirm-logout-btn">Logout</button>
-                </div>
+    <!-- Modal for Logout Confirmation -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top: 70px; left:45%; transform: translateX(-50%); width: 150px;">
+        <div class="modal-content">
+            <!-- <div class="modal-header">
+                <h5 class="modal-title" id="logoutModalLabel">Signout</h5>
+            </div> -->
+            <div class="modal-body">
+                <button type="button" class="btn btn-primary" id="signout-btn">Signout</button>
             </div>
         </div>
     </div>
+</div>
 
-   
-  
-
- 
-
-<!-- Modal Structure -->
-<div class="modal fade" id="comingSoonModal" tabindex="-1" aria-labelledby="comingSoonModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<!-- Second Modal: Final Signout Confirmation -->
+<div class="modal fade" id="finalLogoutModal" tabindex="-1" aria-labelledby="finalLogoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top: 70px; left: 50%; transform: translateX(-50%); width: 300px;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="comingSoonModalLabel">Message</h5>
+                <h5 class="modal-title" id="finalLogoutModalLabel">Confirm Logout</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-               <img src="../assets/img/comming-soon.jpg" class="comming-soon" alt="">
+                Are you sure you want to log out?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirm-logout-btn">Logout</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Latest Movies Section -->
-<div class="heading-text d-flex justify-content-center align-items-center mt-5">
-    <h3>Latest Movies</h3>
-</div>
 
-<div class="container">
-    <div class="m-4">
-        <!-- First Row with 3 cards (Same as the first three cards) -->
+    <!-- Language Buttons -->
+    <div class="container my-5">
+      <div class="d-flex justify-content-start align-items-center">
+          <h3 class="me-3">Movies</h3>
+          <button type="button" id="show-all" class="btn btn-outline-custom rounded-pill me-2">Show All</button>
+          <button type="button" class="btn btn-outline-custom rounded-pill me-2">Hindi</button>
+          <button type="button" class="btn btn-outline-custom rounded-pill me-2">English</button>
+          <button type="button" class="btn btn-outline-custom rounded-pill">Tamil</button>
+      </div>
+  </div>
+  
+
+    <!-- Movie Listings -->
+    <section class="container movie-listings">
+        <h2 class="text-center mb-4">Latest Movies</h2>
+
+<!-- English Movies -->
+<h3 class="mt-5 mb-3 movie-section" data-language="english">English Movies</h3>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <!-- Movie 1 -->
+    <div class="col">
+        <div class="card">
+            <img src="../assets/img/captainAmerica.avif" class="card-img-top" alt="Captain America">
+            <div class="card-body">
+                <h5 class="card-title">Captain America</h5>
+                <p class="card-text">A sci-fi adventure exploring the future of humanity.</p>
+                <a href="../pages/movie-detail.html?movieIndex=3" class="btn btn-primary movie-button">Book Now</a>
+                <button class="btn btn-primary add-to-cart" 
+                data-movie-index="3" 
+                data-movie-title="Captain America" 
+                data-movie-img="../assets/img/captainAmerica.avif">
+                Add to Cart
+            </button>
+            </div>
+        </div>
+    </div>
+    <!-- Movie 2 -->
+    <div class="col">
+        <div class="card">
+            <img src="../assets/img/Interstellar.avif" class="card-img-top" alt="Interstellar">
+            <div class="card-body">
+                <h5 class="card-title">Interstellar</h5>
+                <p class="card-text">A space exploration film with stunning visuals.</p>
+                <a href="../pages/movie-detail.html?movieIndex=4" class="btn btn-primary movie-button">Book Now</a>
+                <button class="btn btn-primary add-to-cart" 
+                data-movie-index="4" 
+                data-movie-title="Interstellar" 
+                data-movie-img="../assets/img/Interstellar.avif">
+                Add to Cart
+            </button>
+            </div>
+        </div>
+    </div>
+    <!-- Movie 3 -->
+    <div class="col">
+        <div class="card">
+            <img src="../assets/img/horror.avif" class="card-img-top" alt="Sonic">
+            <div class="card-body">
+                <h5 class="card-title">Nosferatu</h5>
+                <p class="card-text">A sci-fi adventure exploring the future of humanity.</p>
+                <a href="../pages/movie-detail.html?movieIndex=11" class="btn btn-primary movie-button">Book Now</a>
+                <button class="btn btn-primary add-to-cart" 
+                data-movie-index="11" 
+                data-movie-title="Nosferatu" 
+                data-movie-img="../assets/img/horror.avif">
+                Add to Cart
+            </button>
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- Hindi Movies -->
+        <h3 class="mt-5 mb-3 movie-section" data-language="hindi">Hindi Movies</h3>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Card 1 -->
+            <!-- Movie 1 -->
             <div class="col">
-                <a href="../pages/movie-detail.html?movieIndex=3" class="text-decoration-none">
-                    <div class="card">
-                        <img src="../assets/img/captainAmerica.avif" class="card-img-top" alt="Captain America">
-                        <div class="card-body">
-                            <h5 class="card-title">Captain America</h5>
-                            <p class="card-text">Action</p>
-                            <a href="../pages/movie-detail.html?movieIndex=3" class="btn btn-primary movie-button">Book Now</a>
-                            <!-- Add to Cart Button -->
-                            <button class="btn btn-primary add-to-cart" 
-                                    data-movie-index="3" 
-                                    data-movie-title="Captain America" 
-                                    data-movie-img="../assets/img/captainAmerica.avif">
-                                Add to Cart
-                            </button>
-                        </div>
+                <div class="card">
+                    <img src="../assets/img/chava.avif" class="card-img-top" alt="Bareilly Ki Barfi">
+                    <div class="card-body">
+                        <h5 class="card-title">Chhaava</h5>
+                        <p class="card-text">Historical</p>
+                        <a href="../pages/movie-detail.html?movieIndex=13" class="btn btn-primary movie-button">Book Now</a>
+                        
+                        
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="13" 
+                        data-movie-title="Chhaava" 
+                        data-movie-img="../assets/img/chava.avif">
+                        Add to Cart
+                    </button>
+                    
                     </div>
-                </a>
+                </div>
             </div>
-
-            <!-- Card 2 -->
+            <!-- Movie 2 -->
             <div class="col">
-                <a href="../pages/movie-detail.html?movieIndex=4" class="text-decoration-none">
-                    <div class="card">
-                        <img src="../assets/img/Interstellar.avif" class="card-img-top" alt="Interstellar">
-                        <div class="card-body">
-                            <h5 class="card-title">Interstellar</h5>
-                            <p class="card-text">Sci-Fi</p>
-                            <a href="../pages/movie-detail.html?movieIndex=4" class="btn btn-primary movie-button">Book Now</a>
-                            <!-- Add to Cart Button -->
-                            <button class="btn btn-primary add-to-cart" 
-                                    data-movie-index="4" 
-                                    data-movie-title="Interstellar" 
-                                    data-movie-img="../assets/img/Interstellar.avif">
-                                Add to Cart
-                            </button>
-                        </div>
+                <div class="card">
+                    <img src="../assets/img/de.avif" class="card-img-top" alt="Dil To Pagal Hai">
+                    <div class="card-body">
+                        <h5 class="card-title">Deva</h5>
+                        <p class="card-text">Action Thriller</p>
+                        <a href="../pages/movie-detail.html?movieIndex=14" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="14" 
+                        data-movie-title="Deva" 
+                        data-movie-img="../assets/img/de.avif">
+                        Add to Cart
+                    </button>
                     </div>
-                </a>
+                </div>
             </div>
-
-            <!-- Card 3 -->
+            <!-- Movie 3 -->
             <div class="col">
-                <a href="../pages/movie-detail.html?movieIndex=5" class="text-decoration-none">
-                    <div class="card">
-                        <img src="../assets/img/Sonic.avif" class="card-img-top" alt="Sonic">
-                        <div class="card-body">
-                            <h5 class="card-title">Sonic</h5>
-                            <p class="card-text">Animation</p>
-                            <a href="../pages/movie-detail.html?movieIndex=5" class="btn btn-primary movie-button">Book Now</a>
-                            <!-- Add to Cart Button -->
-                            <button class="btn btn-primary add-to-cart" 
-                                    data-movie-index="5" 
-                                    data-movie-title="Sonic" 
-                                    data-movie-img="../assets/img/Sonic.avif">
-                                Add to Cart
-                            </button>
-                        </div>
+                <div class="card">
+                    <img src="../assets/img/love.avif" class="card-img-top" alt="Jab We Met">
+                    <div class="card-body">
+                        <h5 class="card-title">Loveyappa</h5>
+                        <p class="card-text">Refreshing blend of love and laughter.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=15" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="15" 
+                        data-movie-title="Loveyappa" 
+                        data-movie-img="../assets/img/love.avif">
+                        Add to Cart
+                    </button>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
 
-        <!-- Second Row with 2 cards (Now styled same as first three cards) -->
-        <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
-            <!-- Card 4 -->
+    
+        <!-- Tamil Movies -->
+        <h3 class="mt-5 mb-3 movie-section" data-language="tamil">Tamil Movies</h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Movie 1 -->
             <div class="col">
-                <a href="../pages/movie-detail.html?movieIndex=8" class="text-decoration-none">
-                    <div class="card">
-                        <img src="../assets/img/Thandel.avif" class="card-img-top" alt="Thandel">
-                        <div class="card-body">
-                            <h5 class="card-title">Thandel</h5>
-                            <p class="card-text">Romantic/Action</p>
-                            <a href="../pages/movie-detail.html?movieIndex=8" class="btn btn-primary movie-button">Book Now</a>
-                            <!-- Add to Cart Button -->
-                            <button class="btn btn-primary add-to-cart" 
-                                    data-movie-index="8" 
-                                    data-movie-title="Thandel" 
-                                    data-movie-img="../assets/img/Thandel.avif">
-                                Add to Cart
-                            </button>
-                        </div>
+                <div class="card">
+                    <img src="../assets/img/Thandel.avif" class="card-img-top" alt="Thandel">
+                    <div class="card-body">
+                        <h5 class="card-title">Thandel</h5>
+                        <p class="card-text">A thrilling Tamil action movie.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=8" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="8" 
+                        data-movie-title="Thandel" 
+                        data-movie-img="../assets/img/Thandel.avif">
+                        Add to Cart
+                    </button>
                     </div>
-                </a>
+                </div>
             </div>
-
-            <!-- Card 5 -->
+            <!-- Movie 2 -->
             <div class="col">
-                <a href="../pages/movie-detail.html?movieIndex=9" class="text-decoration-none">
-                    <div class="card">
-                        <img src="../assets/img/Vidaamuyarchi.avif" class="card-img-top" alt="Vidaamuyarchi">
-                        <div class="card-body">
-                            <h5 class="card-title">Vidaamuyarchi</h5>
-                            <p class="card-text">Action</p>
-                            <a href="../pages/movie-detail.html?movieIndex=9" class="btn btn-primary movie-button">Book Now</a>
-                            <!-- Add to Cart Button -->
-                            <button class="btn btn-primary add-to-cart" 
-                                    data-movie-index="9" 
-                                    data-movie-title="Vidaamuyarchi" 
-                                    data-movie-img="../assets/img/Vidaamuyarchi.avif">
-                                Add to Cart
-                            </button>
-                        </div>
+                <div class="card">
+                    <img src="../assets/img/Vidaamuyarchi.avif" class="card-img-top" alt="Vidaamuyarchi">
+                    <div class="card-body">
+                        <h5 class="card-title">Vidaamuyarchi</h5>
+                        <p class="card-text">A gripping Tamil drama.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=9" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="9" 
+                        data-movie-title="Vidaamuyarchi" 
+                        data-movie-img="../assets/img/Vidaamuyarchi.avif">
+                        Add to Cart
+                    </button>
                     </div>
-                </a>
+                </div>
+            </div>
+            <!-- Movie 3 -->
+            <div class="col">
+                <div class="card">
+                    <img src="../assets/img/dragon.avif" class="card-img-top" alt="Marco">
+                    <div class="card-body">
+                        <h5 class="card-title">Dragon</h5>
+                        <p class="card-text">A comedy Tamil action movie.</p>
+                        <a href="../pages/movie-detail.html?movieIndex=12" class="btn btn-primary movie-button">Book Now</a>
+                        <button class="btn btn-primary add-to-cart" 
+                        data-movie-index="12" 
+                        data-movie-title="Dragon" 
+                        data-movie-img="../assets/img/dragon.avif">
+                        Add to Cart
+                    </button>
+                    </div>
+                </div>
             </div>
         </div>
-      
-    </div>
-</div>
+    </section>
+
     <footer class="text-center py-4">
         <p>&copy; 2025 Your Company. All rights reserved.</p>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/recoMovies.js"></script>
     <script src="../js/dashboard.js"></script>
     <script src="../js/movie-details.js"></script>
     <script src="../js/cart.js"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+	

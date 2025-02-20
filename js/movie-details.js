@@ -167,13 +167,13 @@ const movies = [
         language: "Hindi",
         details: "2h 41 min • Action, Drama, Historical • UA-16+ • 14 Feb, 2025",
         about: "After Chhatrapati Shivaji Maharaj`s death, the Mughals aim to expand into the Deccan, only to face his fearless son, Chhatrapati Sambhaji Maharaj. Chhaava, inspired by Shivaji Sawant`s novel, chronicles Chhatrapati Sambhaji Maharaj`s unwavering resistance against Aurangzeb, marked by courage, strategy, and betrayal.",
-        video: "../assets/img/vi.mp4"
+        video: "../assets/img/chava.webm"
     
     },
     {
         title: "Deva",
         backgroundImage: "../assets/img/Deva-BANNER.jpg",
-        poster: "../assets/img/deva.avif",
+        poster: "../assets/img/de.avif",
         rating: "⭐ 7.5/10 (106K Votes)",
         format: "2D, ICE",
         language: "Hindi",
@@ -192,7 +192,7 @@ const movies = [
         language: "Hindi",
         details: "2h 18 min • Comedy, Romantic • UA16+ • 07 Feb, 2025",
         about: "When a loving couple, Gaurav and Baani are made to swap phones for 24 hours, their perfect relationship shatters; secrets unravel, trust crumbles, and they`re left questioning everything. Can their love survive the truth?",
-        video: "../assets\img\LOVE.mp4"
+        video: "../assets/img/LOVE.mp4"
     
     }
 
