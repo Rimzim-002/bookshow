@@ -367,7 +367,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.getElementById('bookTicketModal').addEventListener('hidden.bs.modal', function(){
-    document.querySelector('.modal-backdrop').remove()
+    document.querySelector('.modal-backdrop').remove();
+    document.body.style.overflow = '';
     });
 
 
