@@ -34,6 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (cartCountElement) {
             cartCountElement.innerHTML = "0";
         }
+
+        // Hide the proceed to checkout button if the cart is empty
+        const proceedToCheckoutButton = document.querySelector('#proceedToCheckoutBtn');
+        proceedToCheckoutButton.classList.add('d-none'); // Hide the button
         return;
     }
 
@@ -126,6 +130,13 @@ document.addEventListener("DOMContentLoaded", function () {
             if (cartCountElement) {
                 cartCountElement.innerHTML = userCart.items.length;
             }
+
+            // Hide or show the proceed to checkout button based on updated total
+            if (updatedTotalAmount === 0) {
+                proceedToCheckoutButton.classList.add('d-none'); // Hide the button
+            } else {
+                proceedToCheckoutButton.classList.remove('d-none'); // Show the button
+            }
         });
     });
 
@@ -148,13 +159,16 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector("#cart-total").innerText = updatedTotalAmount;
             document.querySelector("#checkout-total").innerText = updatedTotalAmount;
 
-            if (cartCountElement) {
-                cartCountElement.innerHTML = userCart.items.length;
-            }
-
             // Show empty cart message if no items remain
             if (userCart.items.length === 0) {
                 document.querySelector("#cart-items").innerHTML = "<p>Your cart is empty. Start adding items!</p>";
+            }
+
+            // Hide or show the proceed to checkout button based on updated total
+            if (updatedTotalAmount === 0) {
+                proceedToCheckoutButton.classList.add('d-none'); // Hide the button
+            } else {
+                proceedToCheckoutButton.classList.remove('d-none'); // Show the button
             }
         });
     });

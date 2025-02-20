@@ -133,6 +133,70 @@ const movies = [
     
     },
 
+    {
+        title: "Nosferatu",
+        backgroundImage: "../assets/img/horror-banner.jpg",
+        poster: "../assets/img/horror.avif",
+        rating: "⭐ 8.6/10 (8.6M Votes)",
+        format: "2D, IMAX",
+        language: "English",
+        details: "2h 4 min • Horror, Mystery • A • 10 Jan, 2025",
+        about: "An ancient Transylvanian vampire stalks a haunted young woman in 19th-century Germany.",
+        video: "../assets/img/horror.mp4"
+    
+    },
+    {
+        title: "Dragon",
+        backgroundImage: "../assets/img/Dragon-banner.avif",
+        poster: "../assets/img/dragon.avif",
+        rating: "⭐ 8.2/10 (5.6M Votes)",
+        format: "2D, IMAX",
+        language: "Tamil",
+        details: "2h 35 min • Comedy, Drama, Thriller • UA-16+ • 21 Feb, 2025",
+        about: "Ragavan, infamous for his reckless ways and academic struggles, turns to fraud after a heartbreaking breakup, chasing wealth and power. However, his deceit leads him into perilous territory. Can he find a way out, or will his choices seal his fate?",
+        video: "../assets/img/dragon.mp4"
+    
+    },
+
+    {
+        title: "Chhaava",
+        backgroundImage: "../assets/img/chaava-banner.jpg",
+        poster: "../assets/img/chava.avif",
+        rating: "⭐ 9.3/10 (10.6M Votes)",
+        format: "2D, ICE, 4DX, IMAX",
+        language: "Hindi",
+        details: "2h 41 min • Action, Drama, Historical • UA-16+ • 14 Feb, 2025",
+        about: "After Chhatrapati Shivaji Maharaj`s death, the Mughals aim to expand into the Deccan, only to face his fearless son, Chhatrapati Sambhaji Maharaj. Chhaava, inspired by Shivaji Sawant`s novel, chronicles Chhatrapati Sambhaji Maharaj`s unwavering resistance against Aurangzeb, marked by courage, strategy, and betrayal.",
+        video: "../assets/img/vi.mp4"
+    
+    },
+    {
+        title: "Deva",
+        backgroundImage: "../assets/img/Deva-BANNER.jpg",
+        poster: "../assets/img/deva.avif",
+        rating: "⭐ 7.5/10 (106K Votes)",
+        format: "2D, ICE",
+        language: "Hindi",
+        details: "2h 36 min • Action, Thriller • UA16+ • 31 Jan, 2025",
+        about: "DEVA is an edge-of-the-seat, power-packed thriller about a brilliant yet rebellious police officer investigating a high-profile murder case.",
+        video: "../assets/img/DEVA.webm"
+    
+    },
+
+    {
+        title: "Loveyapa",
+        backgroundImage: "../assets/img/LOVE-BANNER.webp",
+        poster: "../assets/img/love.avif",
+        rating: "⭐ 7.9/10 (16K Votes)",
+        format: "2D, IMAX",
+        language: "Hindi",
+        details: "2h 18 min • Comedy, Romantic • UA16+ • 07 Feb, 2025",
+        about: "When a loving couple, Gaurav and Baani are made to swap phones for 24 hours, their perfect relationship shatters; secrets unravel, trust crumbles, and they`re left questioning everything. Can their love survive the truth?",
+        video: "../assets\img\LOVE.mp4"
+    
+    }
+
+
 ];
 
 function loadMovieDetails() {
