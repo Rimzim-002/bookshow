@@ -366,6 +366,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.getElementById('bookTicketModal').addEventListener('hidden.bs.modal', function(){
+    document.querySelector('.modal-backdrop').remove()
+    });
+
 
 document.getElementById("proceedToPaymentBtn").addEventListener("click", function() {
     let movieTitle = document.getElementById("movie-title").innerText;

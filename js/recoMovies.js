@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // ✅ Function to Update Cart Count
+    // Function to Update Cart Count
     function updateCartCount() {
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         cartCountElement.textContent = cart.length; // Update cart count
